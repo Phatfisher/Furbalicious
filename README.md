@@ -1,8 +1,11 @@
 # Furbalicious
 
+# Scrum Master
+Ma Vang
+
 # Development Team 
-Ma Vang 
-David Gerard
+Ma Vang /n
+David Gerard /n
 Alek Rowe
 
 # Description
