@@ -4,8 +4,8 @@
 Ma Vang
 
 # Development Team 
-Ma Vang /n
-David Gerard /n
+Ma Vang <br/>
+David Gerard <br/>
 Alek Rowe
 
 # Description
