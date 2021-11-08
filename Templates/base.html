@@ -1,0 +1,26 @@
+{% load static %}
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<h1> Furby Catalog</h1>
+<div>
+{% block content%}
+{% endblock content %}
+</div>
+
+<ul class="nav">
+    <li><a href="">Profile</a></li>
+    <li><a href="">Shopping Cart</a></li>
+    <li><a href="">Login</a></li>
+    <li><a href="">Home</a></li>
+    <li><a href="">Registration</a></li>
+</ul>
+</body>
+
+
+
+
+
+</html>
