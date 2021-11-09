@@ -1,5 +1,5 @@
 from django.apps import AppConfig
-rom Controllers.Email import email
+from Controllers import Email
 
 
 class WebsiteConfig(AppConfig):
@@ -7,4 +7,4 @@ class WebsiteConfig(AppConfig):
     subject = "Test Email"
     message = "This is a test email, please ignore."
     emailList = ["davidgereau@gmail.com"]
-    email.sendEmail(subject, message, emailList)
+    Email.sendEmail(subject, message, emailList)
