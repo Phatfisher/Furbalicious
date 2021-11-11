@@ -20,6 +20,10 @@ ul.nav > li:hover{
 }
  */
 
+ #pageTitle{
+     text-align: center;
+ }
+
  .card{
      width: 250px;
  }

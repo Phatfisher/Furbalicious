@@ -1,6 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block content %}
-<h1>Login Page</h1>
+
+<div id="content">
+    <div id="loginDiv">
+        <h1 id="pageTitle">Login</h1>
+        <form id="loginForm" method="post" name="login">
+            {% csrf_token %}
+            <table id="loginTable">
+                <tr><td><label for="email"><b>Email</b></label></td></tr>
+                <tr><td><input type="text" placeholder="Enter Email" name="email" id="email" required></td></tr>
+                <tr><td><label for="password"><b>Password</b></label></td></tr>
+                <tr><td><input type="password" placeholder="Enter Password" name="password" id="password" required></td></tr>
+                <tr>
+                    <td>
+                        <input type="submit" class="loginButton" value="Login" id="submitButton">
+                        <a href="/registration/"><button type="button" id="registerButton" class="loginButton">Register</button></a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
 {% endblock content %}
