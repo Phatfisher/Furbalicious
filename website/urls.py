@@ -1,6 +1,5 @@
-from django.urls import path
+from django.urls import path, reverse
 from django.conf.urls import url
-from django.core.urlresolvers import reverse
 import website.views as views
 
 urlpatterns = [
