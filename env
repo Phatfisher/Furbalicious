@@ -1,3 +1,0 @@
-export DEBUG=True
-export SECRET_KEY=xw1fNPtNEnZPFmk4RBBed9yNamR16TixUWG9ZtAL-Ps
-export DATABASE_URL=sqlite:///db.sqlite3
