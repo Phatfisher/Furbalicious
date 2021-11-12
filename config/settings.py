@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Furbalicious.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Furbalicious.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 #Email System
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
