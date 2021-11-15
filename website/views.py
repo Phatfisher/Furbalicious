@@ -40,6 +40,9 @@ class CartPageView(TemplateView):
 class OrderHistoryPageView(TemplateView):
     template_name = 'order_history.html'
 
+class HistoryPageView(TemplateView):
+    template_name = 'history.html'
+
 class CheckoutPageView(TemplateView):
     template_name = 'checkout.html'
     
