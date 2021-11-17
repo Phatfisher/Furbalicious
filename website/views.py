@@ -12,7 +12,6 @@ class HomePageView(TemplateView):
 class RegistrationPageView(TemplateView):
     template_name = 'registration.html'
 
-
 class LoginPageView(TemplateView):
     template_name = 'login.html'
 
@@ -46,3 +45,6 @@ class HistoryPageView(TemplateView):
 class CheckoutPageView(TemplateView):
     template_name = 'checkout.html'
     
+def logout_request(request):
+    logout(request)
+    return redirect('home')
