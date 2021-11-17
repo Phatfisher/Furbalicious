@@ -1,3 +1,4 @@
 env/
 Furbalicious/__pycache__/
 website/__pycache__/
+.env

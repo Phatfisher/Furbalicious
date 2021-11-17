@@ -1,0 +1,41 @@
+#content{
+    background-color: dimgrey;
+}
+
+#loginDiv{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: lightgray;
+    border-radius: 20px;
+    padding: 20px;
+    width: 30%;
+    min-width: 237px;
+    max-width: 450px;
+}
+
+table, #buttonDiv{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+label{
+    padding-top: 15px;
+}
+
+.loginButton{
+    background-color: dodgerblue;
+    color:white;
+    margin-top: 15px;
+    border-radius: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 48.8%
+}
+
+#registerButton{
+    background-color: darkgreen;
+}
