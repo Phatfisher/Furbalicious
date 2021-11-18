@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<div id="content">
+<!-- <div id="content">
     <div id="registerDiv">
         <h1 id="pageTitle">Registration</h1>
         <form id="registerForm" method="post" name="login">
@@ -25,6 +25,33 @@
             </table>
         </form>
     </div>
+</div> -->
+
+<div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+    <h1 id="pageTitle">Registration Form</h1>
+    <form>
+        {% csrf_token %}
+        <div class="form-group>
+                <label for=" firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+        </div>
+        <div class="form-group>
+                <label for=" lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="text" class="form-control" id="email" placeholder="Email Address" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+            <label>Already have an account? <a href="{% url 'login' %}">Login Here</a></label>
+        </div>
+        <button type="submit" class="btn btn-success" value="Register">Register</button>
+    </form>
 </div>
 
 {% endblock content %}
