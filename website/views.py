@@ -5,12 +5,37 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.http import HttpResponse,  HttpResponseRedirect
 from django.urls import reverse
+from .models import CustomUser
+import uuid
+import datetime
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
 
 class RegistrationPageView(TemplateView):
     template_name = 'registration.html'
+
+    #Handles registration attempt
+    def post(self, request):
+        firstName = request.POST['firstName']
+        lastName = request.POST['lastName']
+        emailAddress = request.POST['email']
+        password = request.POST['password']
+        confirmationCode = uuid.uuid4().hex
+
+        #Check if email is already in use, if not create user
+        user = CustomUser.objects.filter(email=emailAddress).first()
+        if user is None:
+            newUser = CustomUser.objects.create_user(firstName = firstName, lastName = lastName, email=emailAddress, 
+            confirmation = confirmationCode, username = emailAddress, password = password)
+
+            newUser.save()
+            login(request, newUser)
+            return redirect('/login/')
+
+        else:
+            print('Registration Failed:  Email in use')
+            return redirect('/registration/')
 
 class LoginPageView(TemplateView):
     template_name = 'login.html'
@@ -27,7 +52,7 @@ class LoginPageView(TemplateView):
             return HttpResponseRedirect(reverse('home'))
         #Else redirect back to login page.  Ideally we need a message system.
         else:
-            print('Login Failed')
+            print('Login Failed for: ' + email + " " + password)
             return redirect('/login/')
 
 class ProfilePageView(TemplateView):

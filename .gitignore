@@ -1,4 +1,9 @@
 .env
-Furbalicious/__pycache__/
+config/__pycache__/
 website/__pycache__/
+*.pyc
+*.pyc
+*.pyc
+*.pyc
 db.sqlite3
+.DS_Store

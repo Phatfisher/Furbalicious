@@ -6,7 +6,8 @@ class CustomUser(AbstractUser):
     firstName = models.CharField(db_column='firstName', blank=False, null=False, max_length=80)
     lastName = models.CharField(db_column='lastName', blank=False, null=False, max_length=80)
     email = models.CharField(db_column='email', blank=False, null=False, max_length=200)
-    isConfirmed = models.IntegerField(db_column='isConfirmed', null=True)
+    isConfirmed = models.BooleanField(db_column='isConfirmed', default=False)
+    confirmation = models.CharField(db_column='confirmation', null=True, max_length=200)
     password = models.CharField(db_column='password', null=False, max_length=200)
     lastLoginDate = models.DateTimeField(db_column='lastLoginDate',  null=True)
 
