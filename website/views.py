@@ -31,7 +31,8 @@ class RegistrationPageView(TemplateView):
 
             newUser.save()
             login(request, newUser)
-            return redirect('/login/')
+            print('Login Successful')
+            return HttpResponseRedirect(reverse('home'))
 
         else:
             print('Registration Failed:  Email in use')
@@ -70,3 +71,6 @@ class HistoryPageView(TemplateView):
 class CheckoutPageView(TemplateView):
     template_name = 'checkout.html'
     
+def logout_request(request):
+    logout(request)
+    return redirect('home')
