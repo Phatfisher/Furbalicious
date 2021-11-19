@@ -30,4 +30,5 @@ class Order(models.Model):
 
 class OrderFurbies(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    furby = models.ForeignKey(Furby, on_delete=models.CASCADE) 
+    furby = models.ForeignKey(Furby, on_delete=models.CASCADE)
+
