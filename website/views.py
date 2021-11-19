@@ -31,7 +31,7 @@ class RegistrationPageView(TemplateView):
 
             newUser.save()
             login(request, newUser)
-            print('Login Successful')
+            print(' SuccLoginessful')
             return HttpResponseRedirect(reverse('home'))
 
         else:
