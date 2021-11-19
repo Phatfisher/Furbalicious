@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.http import HttpResponse,  HttpResponseRedirect
 from django.urls import reverse
-from .models import CustomUser
+from .models import CustomUser, Furby
 import uuid
 import datetime
 
@@ -31,7 +31,7 @@ class RegistrationPageView(TemplateView):
 
             newUser.save()
             login(request, newUser)
-            print('Login Successful')
+            print(' SuccLoginessful')
             return HttpResponseRedirect(reverse('home'))
 
         else:

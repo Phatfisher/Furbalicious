@@ -1,6 +1,73 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block content %}
-<h1>History Page</h1>
+<div class="container">
+    <!-- Jumbotron for cta -->
+    <div class="row">
+        <div class="jumbotron">
+            <h1 class="display-4">History</h1>
+            <hr class="my-4">
+            <p class="lead">
+            </p>
+        </div>
+    </div>
+
+    <!-- Content just as default data for now -->
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'images/furby_generic.svg' %}"
+                     style="height: 175; width: 200px;" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">(where description will go)</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Price</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'images/furby_generic.svg' %}"
+                     style="height: 175; width: 200px;" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">(where description will go)</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Price</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'images/furby_generic.svg' %}"
+                     style="height: 175; width: 200px;" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">(where description will go)</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Price</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'images/furby_generic.svg' %}"
+                     style="height: 175; width: 200px;" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">(Where description will go)</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Price</small>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+</div>
 {% endblock content %}
+
