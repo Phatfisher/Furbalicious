@@ -31,7 +31,8 @@ class RegistrationPageView(TemplateView):
 
             newUser.save()
             login(request, newUser)
-            return redirect('/login/')
+            print('Login Successful')
+            return HttpResponseRedirect(reverse('home'))
 
         else:
             print('Registration Failed:  Email in use')
