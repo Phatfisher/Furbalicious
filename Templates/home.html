@@ -7,7 +7,7 @@
     <div class="row">
         <div class="jumbotron">
             {% if user.is_authenticated %}
-            <h1 class="display-4">Welcome To Furbalicious {{ user.username|capfirst }}!</h1>
+            <h1 class="display-4">Welcome {{ request.user.firstName|capfirst }}!</h1>
             {% else %}
             <h1 class="display-4">Welcome To Furbalicious!</h1>
             {% endif %}
@@ -20,6 +20,14 @@
                 <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
             </p>
         </div>
+    </div>
+
+    <div class="row">
+        {% for furby in furbys %}
+        <label>{{ furby.furbyName }}</label>
+        {% empty %}
+        <label>No Furbies, make sure there are furbies in DB (admin).</label>
+        {% endfor %}
     </div>
 
     <!-- Content just as default data for now -->

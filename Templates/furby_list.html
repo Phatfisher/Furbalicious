@@ -1,0 +1,8 @@
+<h1>Furbies</h1>
+<ul>
+{% for furby in furby_list %}
+    <li>{{ furby.pub_date|date }} - {{ furby.headline }}</li>
+{% empty %}
+    <li>No Furbies yet.</li>
+{% endfor %}
+</ul>
