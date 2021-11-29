@@ -53,6 +53,19 @@
     {% block content%}
     {% endblock content %}
   </div>
+
+  <!-- Message Modal -->
+  <div id="msgModal" class="modal">
+    <div id="modalContent" class="modal-content">
+      <span class="close">&times;</span>
+      {% if messages %}
+        {% for message in messages %}
+
+        <p><h3>{{ message }}</h3></p>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
 </body>
 
 </html>
