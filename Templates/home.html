@@ -24,14 +24,26 @@
 
     <div class="row">
         {% for furby in furbys %}
-        <label>{{ furby.furbyName }}</label>
+        <div class="col-sm-3">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'images/furby_generic.svg' %}"
+                    style="height: 175; width: 200px;" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ furby.furbyName }}</h5>
+                    <p class="card-text">{{ furby.description }}</p>
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-primary">Add to Cart</button>
+                </div>
+            </div>
+        </div>
         {% empty %}
         <label>No Furbies, make sure there are furbies in DB (admin).</label>
         {% endfor %}
     </div>
 
     <!-- Content just as default data for now -->
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-sm-3">
             <div class="card">
                 <img class="card-img-top" src="{% static 'images/furby_generic.svg' %}"
@@ -89,6 +101,6 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 {% endblock content %}
