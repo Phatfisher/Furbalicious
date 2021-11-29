@@ -9,8 +9,14 @@ from .models import CustomUser, Furby
 import uuid
 import datetime
 
-class HomePageView(TemplateView):
-    template_name = 'home.html'
+# class HomePageView(TemplateView):
+#     template_name = 'home.html'
+
+
+def HomePage(request):
+    listing = Furby.objects.all()
+    return render(request, 'home.html', {'furbys': listing})
+
 
 class RegistrationPageView(TemplateView):
     template_name = 'registration.html'

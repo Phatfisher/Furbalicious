@@ -22,6 +22,12 @@
         </div>
     </div>
 
+    <div class="row">
+        {% for o in furbys %}
+        <label>{% o.furbyName %}</label>
+        {% endfor %}
+    </div>
+
     <!-- Content just as default data for now -->
     <div class="row">
         <div class="col-sm-3">
