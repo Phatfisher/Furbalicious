@@ -1,5 +1,6 @@
+from django.db import models
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView,ListView
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
@@ -8,10 +9,14 @@ from django.urls import reverse
 from .models import CustomUser, Furby
 import uuid
 import datetime
+from django.utils import timezone
 
-# class HomePageView(TemplateView):
-#     template_name = 'home.html'
 
+class HomePageView(TemplateView):
+    template_name = 'home.html'
+
+# class HomePageListView(ListView):
+#     model = Furby
 
 def HomePage(request):
     listing = Furby.objects.all()

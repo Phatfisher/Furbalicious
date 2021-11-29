@@ -23,8 +23,10 @@
     </div>
 
     <div class="row">
-        {% for o in furbys %}
-        <label>{% o.furbyName %}</label>
+        {% for furby in furbys %}
+        <label>{{ furby.furbyName }}</label>
+        {% empty %}
+        <label>No Furbies, make sure there are furbies in DB (admin).</label>
         {% endfor %}
     </div>
 
