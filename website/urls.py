@@ -12,4 +12,5 @@ urlpatterns = [
     path('checkout/', views.CheckoutPageView.as_view(), name='checkout'),
     path('history/', views.HistoryPageView.as_view(), name='history'),
     path('logout', views.logout_request, name='logout'),
+    url('addToCart', views.addToCart, name='addToCart'),
 ]

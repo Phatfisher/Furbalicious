@@ -61,7 +61,8 @@ class LoginPageView(TemplateView):
         if user is not None:
             login(request, user)
             print('Login Successful')
-            return HttpResponseRedirect(reverse('home'))
+            return redirect('home')
+
         #Else redirect back to login page.  Ideally we need a message system.
         else:
             print('Login Failed for: ' + email + " " + password)
@@ -69,6 +70,19 @@ class LoginPageView(TemplateView):
 
 class ProfilePageView(TemplateView):
     template_name = 'profile.html'
+
+    def post(self, request):
+        if request.user.is_authenticated():
+            request.user.firstName = request.POST['firstName']
+            request.user.lastName = request.POST['lastName'] 
+            request.user.email = request.POST['email'] 
+            request.user.password = request.POST['password'] 
+            request.user.save()
+            return redirect('home')
+
+        #Else redirect back to login page
+        else:
+            return redirect('/login/')
 
 class CartPageView(TemplateView):
     template_name = 'cart.html'
@@ -85,3 +99,36 @@ class CheckoutPageView(TemplateView):
 def logout_request(request):
     logout(request)
     return redirect('home')
+
+#Adds the beloved furby to the cart
+def addToCart(request):
+    if request.user.is_authenticated:
+        furbyID = request.GET.get('furbyID')
+        furby = Furby.objects.filter(pk=furbyID).first()
+
+        if furby is not None:
+            if 'cart' not in request.session: request.session['cart'] = [furby]
+            else: request.session['cart'].append(furby)
+            print(furby.name + " added to cart!")
+        else: print("I am error.  Furby ID does not exist." + furbyID)
+        return redirect('home')
+
+    else:
+        print("User not logged in.")
+        return redirect('login')
+
+#Removes the selected furby from the cart
+def removeFromCart(request):
+    if request.user.is_authenticated():
+        furbyID = request.GET['furbyID']
+        furby = Furby.objects.get(pk=furbyID)
+
+        if furby is not None:
+            if 'cart' not in request.session: print("Error.  Cart somehow does not exist.  This should not be possible.")
+            else: request.session['cart'].remove(furby)
+        else: print("I am error.  Furby ID does not exist.")
+
+        return redirect('cart')
+    else:
+        print("User not logged in.")
+        return redirect('login')
