@@ -28,8 +28,9 @@
             <div class="card">
                 <img class="card-img-top" src="{% static 'images/' %}{{ furby.imagePath }}" alt="{{ furby.imagePath }}">
                 <div class="card-body">
-                    <h5 class="card-title">{{ furby.furbyName }}</h5>
+                    <h5 class="card-title text-center">{{ furby.furbyName }}</h5>
                     <p class="card-text">{{ furby.description }}</p>
+                    <b>${{ furby.cost }}</b>
                 </div>
                 <div class="col-xs-1 text-center">
                     <button type="button" class="btn btn-success">+ Add to Cart</button>
