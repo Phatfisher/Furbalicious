@@ -26,8 +26,6 @@ ul.nav > li:hover{
 
  .card{
      width: 250px;
-     padding-bottom: 10px;
-     padding-top: 20px;
  }
 
  /* The Modal (background) */
@@ -66,4 +64,3 @@ ul.nav > li:hover{
  
  h2{
     padding-top: 30px; }
-
