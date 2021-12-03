@@ -102,11 +102,14 @@ class CartPageView(TemplateView):
         else: cart = request.session.get('cart')
         print(cart)
         furbies = []
+        total = 0
 
         for furbyId in cart:
-            furbies.append(Furby.objects.filter(pk=furbyId).first())
+            furby = Furby.objects.filter(pk=furbyId).first()
+            furbies.append(furby)
+            total += furby.cost
 
-        return render(request, 'cart.html', {'furbies': furbies})
+        return render(request, 'cart.html', {'furbies': furbies, 'total': total})
             
 
 class OrderHistoryPageView(TemplateView):
