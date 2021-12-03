@@ -72,11 +72,20 @@ class ProfilePageView(TemplateView):
     template_name = 'profile.html'
 
     def post(self, request):
-        if request.user.is_authenticated():
+        request.user.cardNumber = request.POST['cardNumber']
+        request.user.cardExpiry = request.POST['cardExpiry']
+        request.user.shippingStreetAddress = request.POST['shippingStreetAddress']
+        request.user.shippingState = request.POST['shippingState']
+        request.user.shippingZip = request.POST['shippingZip']
+        request.user.shippingCountry = request.POST['shippingCountry']
+
+    def post(self, request):
+        if request.user.is_authenticated:
             request.user.firstName = request.POST['firstName']
             request.user.lastName = request.POST['lastName'] 
             request.user.email = request.POST['email'] 
             request.user.password = request.POST['password'] 
+            request.user.username = request.POST['email']
             request.user.save()
             return redirect('home')
 
