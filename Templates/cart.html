@@ -15,7 +15,7 @@
 
     <!-- Content just as default data for now -->
 
-
+    <form id="CartCSS">
     <div class="row">
         {% for furby in furbies %}
         <div class="col-sm-3">
@@ -35,8 +35,10 @@
         <label>No Furbies, make sure there are furbies in DB (admin).</label>
         {% endfor %}
     </div>
+    </form>
     <p class="lead" style="padding-top:200; text-align:center;"> (Total sum of Your Order)
-        <a class="nav-link" href="{% url 'checkout' %}">Checkout Order</a>
+        <br>
+        <a id="CartToCheckout" href="{% url 'checkout' %}">Checkout Order</a>
     </p>
 </div>
 
