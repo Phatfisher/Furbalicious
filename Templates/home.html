@@ -33,7 +33,7 @@
                     <p class="card-text">{{ furby.description }}</p>
                 </div>
                 <div class="card-footer">
-                    <button type="button" class="btn btn-primary">Add to Cart</button>
+                    <button type="button" id="{{furby.pk}}" class="btn btn-primary" onclick="addToCart(this)">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -42,65 +42,11 @@
         {% endfor %}
     </div>
 
-    <!-- Content just as default data for now -->
-    <!-- <div class="row">
-        <div class="col-sm-3">
-            <div class="card">
-                <img class="card-img-top" src="{% static 'images/furby_generic.svg' %}"
-                    style="height: 175; width: 200px;" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                </div>
-                <div class="card-footer">
-                    <button type="button" class="btn btn-primary">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card">
-                <img class="card-img-top" src="{% static 'images/furby_generic.svg' %}"
-                    style="height: 175; width: 200px;" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card">
-                <img class="card-img-top" src="{% static 'images/furby_generic.svg' %}"
-                    style="height: 175; width: 200px;" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card">
-                <img class="card-img-top" src="{% static 'images/furby_generic.svg' %}"
-                    style="height: 175; width: 200px;" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
+    <script>
+        function addToCart(button)
+        {
+            window.location.href = "/addToCart/?furbyID="+button.id;
+        }
+    </script>
 
 {% endblock content %}

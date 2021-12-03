@@ -17,66 +17,23 @@
 
 
     <div class="row">
+        {% for furby in furbies %}
         <div class="col-sm-3">
             <div class="card">
-            
+                <img class="card-img-top" src="{% static 'images/furby_generic.svg' %}"
+                    style="height: 175; width: 200px;" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">(where description will go)</p>
+                    <h5 class="card-title">{{ furby.furbyName }}</h5>
+                    <p class="card-text">{{ furby.description }}</p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">Price</small>
+                    <small class="text-muted">{{furby.cost}}</small>
                 </div>
             </div>
         </div>
-        <div class="col-sm-3">
-            <div class="card">
-
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">(where description will go)</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Price</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card">
-
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">(where description will go)</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Price</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card">
-               
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">(Where description will go)</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Price</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card">
-
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">(where description will go)</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Price</small>
-                </div>
-            </div>
-        </div>
+        {% empty %}
+        <label>No Furbies, make sure there are furbies in DB (admin).</label>
+        {% endfor %}
     </div>
     <p class="lead" style="padding-top:200; text-align:center;"> (Total sum of Your Order)
         <a class="nav-link" href="{% url 'checkout' %}">Checkout Order</a>
