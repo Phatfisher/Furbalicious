@@ -36,7 +36,7 @@
             </div>
         </div>
         {% empty %}
-        <label>No Furbies, make sure there are furbies in DB (admin).</label>
+        <label>There are no furbies in your cart. Click <a href="{% url 'home' %}">here</a> to view the collection.</label>
         {% endfor %}
     </div>
 
