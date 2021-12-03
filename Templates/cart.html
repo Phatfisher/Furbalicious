@@ -15,7 +15,7 @@
 
     <!-- Content just as default data for now -->
 
-
+    <form id="CartCSS">
     <div class="row">
         <div class="col-sm-3">
             <div class="card">
@@ -78,8 +78,10 @@
             </div>
         </div>
     </div>
+    </form>
     <p class="lead" style="padding-top:200; text-align:center;"> (Total sum of Your Order)
-        <a class="nav-link" href="{% url 'checkout' %}">Checkout Order</a>
+        <br>
+        <a id="CartToCheckout" href="{% url 'checkout' %}">Checkout Order</a>
     </p>
 </div>
 

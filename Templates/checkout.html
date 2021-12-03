@@ -3,44 +3,38 @@
 
 
 {% block content %}
-<h1>Checkout</h1>
+<h1 id="CheckoutHead">Checkout</h1>
 <div>
-<form>
-    <div>
-    <label for="cardNumber">Card Number:</label><br>
-    <input type="text" id="cardNumber" name="cardNumber"><br>
-    <label for="cardExpiry">Expiration Date:</label><br>
-    <input type="text" id="cardExpiry" name="cardExpiry"><br>
-    <label for="CSC">CSC:</label><br>
-    <input type="text" id="CSC" name="CSC"><br>
+    <form id="checkoutForm" method="post">
+        {% csrf_token %}    
+        <h2 id="CardInfo">Card Information</h2>
+        <div>
+            <label for="cardNumber">Card Number:</label><br>
+            <input type="text" id="cardNumber" name="cardNumber"><br>
+            <label for="cardExpiry">Expiration Date:</label><br>
+            <input type="text" id="cardExpiry" name="cardExpiry"><br>
+            <label for="CSC">CSC:</label><br>
+            <input type="text" id="CSC" name="CSC"><br>
+        </div>
+        <div>
+
+            <h2 id="addressInfo">Address Information</h2>
+        </div>
+        <div>
+            <label for="shippingStreetAddress">Adress:</label><br>
+            <input type="text" id="shippingStreetAddress" name="shippingStreetAddress"><br>
+            <label for="Zip">Zip code:</label><br>
+            <input type="text" id="Zip" name="Zip"><br>
+            <label for="shippingCity">City:</label><br>
+            <input type="text" id="shippingCity" name="shippingCity"><br>
+            <label for="shippingState">State:</label><br>
+            <input type="text" id="shippingState" name="shippingState"><br>
+            <label for="shippingCountry">Country:</label><br>
+            <input type="text" id="shippingCountry" name="shippingCountry"><br>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" value="Login">Purchase</button>
+    </form>
 </div>
-    <div>
-        <br>
-        <br>
-        <br>
-    <h2>Adress Information</h2>
-    </div>
-    <div>
-        <label for="shippingStreetAddress">Adress:</label><br>
-        <input type="text" id="shippingStreetAddress" name="shippingStreetAddress"><br>
-        <label for="Zip">Zip code:</label><br>
-        <input type="text" id="Zip" name="Zip"><br>
-        <label for="shippingCity">City:</label><br>
-        <input type="text" id="shippingCity" name="shippingCity"><br>
-        <label for="shippingState">State:</label><br>
-        <input type="text" id="shippingState" name="shippingState"><br>
-        <label for="shippingCountry">Country:</label><br>
-        <input type="text" id="shippingCountry" name="shippingCountry"><br>
-    </div>
 
-
-</form>
-</div>
-<br>
-<br>
-
-<a class="btn btn-primary btn-lg" href="#" role="button">Purchase</a>
 {% endblock content %}
-
-
-
