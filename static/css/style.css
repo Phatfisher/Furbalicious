@@ -19,6 +19,9 @@ ul.nav > li:hover{
     background-color: #2779BF;
 }
  */
+ .card{
+     margin-top: 15px;
+ }
 
  #pageTitle{
      text-align: center;
@@ -26,8 +29,6 @@ ul.nav > li:hover{
 
  .card{
      width: 250px;
-     padding-bottom: 10px;
-     padding-top: 20px;
  }
 #Cart{
     border: 10px solid #555;

@@ -160,7 +160,9 @@ def addToCart(request):
 
         if furby is not None:
             if 'cart' not in request.session: request.session['cart'] = [furbyID]
-            else: request.session['cart'].append(furbyID)
+            else: 
+                request.session['cart'].append(furbyID)
+                request.session.save()
             print(furby.furbyName + " added to cart!")
         else: print("I am error.  Furby ID does not exist." + furbyID)
         return redirect('home')
@@ -171,13 +173,17 @@ def addToCart(request):
 
 #Removes the selected furby from the cart
 def removeFromCart(request):
-    if request.user.is_authenticated():
-        furbyID = request.GET['furbyID']
+    if request.user.is_authenticated:
+        furbyID = request.GET.get('furbyID')
         furby = Furby.objects.filter(pk=furbyID).first()
 
         if furby is not None:
             if 'cart' not in request.session: print("Error.  Cart somehow does not exist.  This should not be possible.")
-            else: request.session['cart'].remove(furbyID)
+            else: 
+                request.session['cart'].remove(furbyID)
+                request.session.save()
+            print(furby.furbyName + " removed!")
+
         else: print("I am error.  Furby ID does not exist.")
 
         return redirect('cart')
