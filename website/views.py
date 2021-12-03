@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.http import HttpResponse,  HttpResponseRedirect
 from django.urls import reverse
-from .models import CustomUser, Furby
+from .models import CustomUser, Furby, Order, OrderFurbies
 import uuid
 import datetime
 from django.utils import timezone
@@ -87,6 +87,19 @@ class ProfilePageView(TemplateView):
 class CartPageView(TemplateView):
     template_name = 'cart.html'
 
+    def get(self, request):
+
+        if 'cart' not in request.session: cart = []
+        else: cart = request.session.get('cart')
+        print(cart)
+        furbies = []
+
+        for furbyId in cart:
+            furbies.append(Furby.objects.filter(pk=furbyId).first())
+
+        return render(request, 'cart.html', {'furbies': furbies})
+            
+
 class OrderHistoryPageView(TemplateView):
     template_name = 'order_history.html'
 
@@ -95,6 +108,36 @@ class HistoryPageView(TemplateView):
 
 class CheckoutPageView(TemplateView):
     template_name = 'checkout.html'
+
+    def post(self, request):
+        if request.user.is_authenticated():
+            cardNumber = request.POST['cardNumber']
+            cardExpiry = request.POST['cardExpiry'] 
+            csc = request.POST['CSC'] 
+            shippingStreetAddress = request.POST['shippingStreetAddress']
+            zip = request.POST['Zip']
+            shippingCity = request.POST['shippingCity'] 
+            shippingState = request.POST['shippingState']
+            shippingCountry = request.POST['shippingCountry']
+            
+            newOrder = Order(user = request.user, orderDate = datetime.datetime.now(), cardNumber=cardNumber, 
+            cardExpiry = cardExpiry, shippingStreetAddress = shippingStreetAddress, shippingCity = shippingCity,
+            shippingState = shippingState, shippingCountry = shippingCountry, shippingZip = zip)
+
+            newOrder.save()
+
+            cart = request.session.get('cart')
+
+            for furbyId in cart:
+                chosenFurby = Furby.objects.filter(pk=furbyId).first()
+                orderFurbies = OrderFurbies(order=newOrder, furby = chosenFurby)
+                orderFurbies.save()
+
+            return redirect('home')
+
+        #Else redirect back to login page
+        else:
+            return redirect('/login/')
     
 def logout_request(request):
     logout(request)
@@ -107,9 +150,9 @@ def addToCart(request):
         furby = Furby.objects.filter(pk=furbyID).first()
 
         if furby is not None:
-            if 'cart' not in request.session: request.session['cart'] = [furby]
-            else: request.session['cart'].append(furby)
-            print(furby.name + " added to cart!")
+            if 'cart' not in request.session: request.session['cart'] = [furbyID]
+            else: request.session['cart'].append(furbyID)
+            print(furby.furbyName + " added to cart!")
         else: print("I am error.  Furby ID does not exist." + furbyID)
         return redirect('home')
 
@@ -121,11 +164,11 @@ def addToCart(request):
 def removeFromCart(request):
     if request.user.is_authenticated():
         furbyID = request.GET['furbyID']
-        furby = Furby.objects.get(pk=furbyID)
+        furby = Furby.objects.filter(pk=furbyID).first()
 
         if furby is not None:
             if 'cart' not in request.session: print("Error.  Cart somehow does not exist.  This should not be possible.")
-            else: request.session['cart'].remove(furby)
+            else: request.session['cart'].remove(furbyID)
         else: print("I am error.  Furby ID does not exist.")
 
         return redirect('cart')
