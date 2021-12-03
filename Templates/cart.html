@@ -15,19 +15,23 @@
 
     <!-- Content just as default data for now -->
 
-    <form id="CartCSS">
     <div class="row">
         {% for furby in furbies %}
         <div class="col-sm-3">
             <div class="card">
-                <img class="card-img-top" src="{% static 'images/furby_generic.svg' %}"
-                    style="height: 175; width: 200px;" alt="Card image cap">
+                <img class="card-img-top" src="{% static 'images/' %}{{ furby.imagePath }}" alt="{{ furby.imagePath }}">
                 <div class="card-body">
-                    <h5 class="card-title">{{ furby.furbyName }}</h5>
+                    <div class="text-center">
+                        <h5 class="card-title">{{ furby.furbyName }}</h5>
+                    </div>
                     <p class="card-text">{{ furby.description }}</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">{{furby.cost}}</small>
+                    <div class="text-center">
+                        <b>${{ furby.cost }}</b>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" id="{{furby.pk}}" class="btn btn-danger" onclick="addToCart(this)">-
+                            Remove</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -35,7 +39,7 @@
         <label>No Furbies, make sure there are furbies in DB (admin).</label>
         {% endfor %}
     </div>
-    </form>
+
     <p class="lead" style="padding-top:200; text-align:center;"> (Total sum of Your Order)
         <br>
         <a id="CartToCheckout" href="{% url 'checkout' %}">Checkout Order</a>

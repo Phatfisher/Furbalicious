@@ -19,6 +19,9 @@ ul.nav > li:hover{
     background-color: #2779BF;
 }
  */
+ .card{
+     margin-top: 15px;
+ }
 
  #pageTitle{
      text-align: center;
