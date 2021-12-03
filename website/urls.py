@@ -13,4 +13,5 @@ urlpatterns = [
     path('history/', views.HistoryPageView.as_view(), name='history'),
     path('logout', views.logout_request, name='logout'),
     url('addToCart', views.addToCart, name='addToCart'),
+    url('removeFromCart', views.removeFromCart, name='removeFromCart'),
 ]

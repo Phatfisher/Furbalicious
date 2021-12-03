@@ -29,7 +29,7 @@
                         <b>${{ furby.cost }}</b>
                     </div>
                     <div class="text-center">
-                        <button type="button" id="{{furby.pk}}" class="btn btn-danger" onclick="addToCart(this)">-
+                        <button type="button" id="{{furby.pk}}" class="btn btn-danger" onclick="removeFromCart(this)">-
                             Remove</button>
                     </div>
                 </div>
@@ -45,5 +45,12 @@
         <a id="CartToCheckout" href="{% url 'checkout' %}">Checkout Order</a>
     </p>
 </div>
+
+<script>
+    function removeFromCart(button)
+    {
+        window.location.href = "/removeFromCart/?furbyID="+button.id;
+    }
+</script>
 
 {% endblock content %}
