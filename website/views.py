@@ -10,6 +10,8 @@ from .models import CustomUser, Furby, Order, OrderFurbies
 import uuid
 import datetime
 from django.utils import timezone
+from django.contrib.auth.hashers import make_password
+from website.Controllers.orderFurby import NewFurby
 
 
 class HomePageView(TemplateView):
@@ -32,6 +34,7 @@ class RegistrationPageView(TemplateView):
         lastName = request.POST['lastName']
         emailAddress = request.POST['email']
         password = request.POST['password']
+        request.user.username = request.POST['email']
         confirmationCode = uuid.uuid4().hex
 
         #Check if email is already in use, if not create user
@@ -72,21 +75,15 @@ class ProfilePageView(TemplateView):
     template_name = 'profile.html'
 
     def post(self, request):
-        request.user.cardNumber = request.POST['cardNumber']
-        request.user.cardExpiry = request.POST['cardExpiry']
-        request.user.shippingStreetAddress = request.POST['shippingStreetAddress']
-        request.user.shippingState = request.POST['shippingState']
-        request.user.shippingZip = request.POST['shippingZip']
-        request.user.shippingCountry = request.POST['shippingCountry']
-
-    def post(self, request):
         if request.user.is_authenticated:
-            request.user.firstName = request.POST['firstName']
-            request.user.lastName = request.POST['lastName'] 
-            request.user.email = request.POST['email'] 
-            request.user.password = request.POST['password'] 
-            request.user.username = request.POST['email']
-            request.user.save()
+            user = CustomUser.objects.filter(email=request.user.email).first()
+
+            user.firstName = request.POST['firstName']
+            user.lastName = request.POST['lastName']
+            user.email = request.POST['email']
+            user.password = make_password(request.POST['password'])
+            user.username = request.POST['email']
+            user.save()
             return redirect('home')
 
         #Else redirect back to login page
@@ -110,19 +107,30 @@ class CartPageView(TemplateView):
             total += furby.cost
 
         return render(request, 'cart.html', {'furbies': furbies, 'total': total})
-            
 
-class OrderHistoryPageView(TemplateView):
-    template_name = 'order_history.html'
 
 class HistoryPageView(TemplateView):
     template_name = 'history.html'
+
+    def get(self, request):
+        newFurbies = []
+        orders = Order.objects.filter(user=request.user)
+        print(len(orders))
+        for order in orders:
+            for orderFurby in OrderFurbies.objects.filter(order = order):
+                furby = orderFurby.furby
+                newFurby = NewFurby(furby.furbyName, furby.cost, furby.imagePath, order.orderDate)
+                newFurbies.append(newFurby)
+                
+        
+        return render(request, 'history.html', {'furbys': newFurbies})
+
 
 class CheckoutPageView(TemplateView):
     template_name = 'checkout.html'
 
     def post(self, request):
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             cardNumber = request.POST['cardNumber']
             cardExpiry = request.POST['cardExpiry'] 
             csc = request.POST['CSC'] 

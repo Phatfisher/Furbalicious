@@ -3,6 +3,7 @@
 
 
 {% block content %}
+<body id="genericBackgroundCheckout">
 <h1 id="CheckoutHead">Checkout</h1>
 <div>
     <form id="checkoutForm" method="post">
@@ -10,9 +11,9 @@
         <h2 id="CardInfo">Card Information</h2>
         <div>
             <label for="cardNumber">Card Number:</label><br>
-            <input type="text" id="cardNumber" name="cardNumber"><br>
+            <input type="text" id="cardNumber" name="cardNumber" placeholder="XXXX-XXXX-XXXX-XXXX"><br>
             <label for="cardExpiry">Expiration Date:</label><br>
-            <input type="text" id="cardExpiry" name="cardExpiry"><br>
+            <input type="text" id="cardExpiry" name="cardExpiry" placeholder="XX/XX"><br>
             <label for="CSC">CSC:</label><br>
             <input type="text" id="CSC" name="CSC"><br>
         </div>
@@ -36,5 +37,6 @@
         <button type="submit" class="btn btn-primary" value="Login">Purchase</button>
     </form>
 </div>
+</body>
 
 {% endblock content %}
