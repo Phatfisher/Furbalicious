@@ -2,18 +2,134 @@
     margin-bottom: 15px;
 }
 
+ul.nav > li:hover{
+    background-color: #2779BF;
+}
+
+ .homeBorder{
+    background-color: lightblue;
+    border: 10px solid #555;
+    text-align: center;
+    margin:auto;
+    width:100%;
+    
+}
+ .card{
+     margin-top: 15px;
+ }
+
  #pageTitle{
      text-align: center;
  }
+ #genericBackgroundCart{
+    background:#DCAE96;
+    ;
+
+ }
+ #genericBackgroundHistory{
+    background:#DCAE96;
+    ;
+
+ }
+ #genericBackgroundProfile{
+    background:#DCAE96;
+    ;
+
+ }
+ #genericBackgroundHome{
+    background:#DCAE96;
+    ;
+
+ }
+ #genericBackgroundCheckout{
+    background:#DCAE96;
+    ;
+
+ }
+ #genericBackgroundLogin{
+    background:#DCAE96;
+ }
+
 
  .card{
      width: 250px;
      margin-top: 15px;
  }
- 
+#Cart{
+    border: 10px solid #555;
+    background-color: #DBF9FC;
+
+}
+
+#profileHead{
+    text-align: center;
+    
+    
+    }
+.profileWelcome{
+    text-align: center;
+    text-decoration-color: blue;
+
+}
+
+.profileText{
+text-align: left;
+font-size: 20px;
+padding-top: 5%;
+padding-bottom: 5%;
+}
+
+.profileEntryText{
+    padding-top: 10px;
+
+}
+
+
 .button2{
     color: crimson;
 }
+
+
+
+#checkoutForm{
+        background-color: #DBF9FC;
+        border: 10px solid #555;
+        text-align: center;
+        margin:auto;
+        width:75%;
+
+}
+
+
+#CheckoutHead{
+    text-align: center;
+
+}
+
+#CartCSS{
+    border: 10px solid #555;    
+
+
+}
+#addressInfo{
+    padding-top:10%;
+    padding-bottom:10%;
+
+}
+#CardInfo{
+    padding-bottom:5%;
+
+}
+
+#registerForm{
+    background-color: #DBF9FC;
+    border: 10px solid #555;
+    text-align: center;
+    margin:auto;
+    width:75%;
+
+}
+
 
 #DeleteButton{
     text-emphasis-color: white;
@@ -27,3 +143,4 @@
     width: 48.8%
 
 }
+
