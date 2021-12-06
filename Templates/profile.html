@@ -25,14 +25,6 @@
         <h3>Information Change Form:</h3>
         <form id="registerForm" method="post" name="login">
             {% csrf_token %}
-
-            <p1 class="profileText">Your current first Name is {{ request.user.firstName}}</p1>
-            <hr>
-            <p1 class="profileText">Your current last Name is {{ request.user.lastName}}</p1>
-            <hr>
-            <p1 class="profileText">Your current Email is {{ request.user.email}}</p1>
-            <hr>
-
             <div class="form-group">
                 <label class="profileEntryText" for=" firstName">New First Name</label>
                 <input type="text" class="form-control" name="firstName" placeholder="First Name" required>
