@@ -31,11 +31,11 @@ ul.nav > li:hover{
      width: 250px;
      margin-top: 15px;
  }
-/* #Cart{
+#Cart{
     border: 10px solid #555;
     background-color: #DBF9FC;
 
-} */
+}
 
 #profileHead{
     text-align: center;
@@ -59,7 +59,7 @@ padding-bottom: 5%;
     color: crimson;
 }
 
-/* #checkoutForm{
+#checkoutForm{
         text-color: red;
         background-color: #DBF9FC;
         border: 10px solid #555;
@@ -67,28 +67,28 @@ padding-bottom: 5%;
         margin:auto;
         width:75%;
 
-} */
+}
 
 
-/* #CheckoutHead{
+#CheckoutHead{
     text-align: center;
 
-} */
+}
 
-/* #CartCSS{
+#CartCSS{
     border: 10px solid #555;    
 
 
-} */
-/* #addressInfo{
+}
+#addressInfo{
     padding-top:10%;
     padding-bottom:10%;
 
-} */
-/* #CardInfo{
+}
+#CardInfo{
     padding-bottom:5%;
 
-} */
+}
 
 
 #DeleteButton{

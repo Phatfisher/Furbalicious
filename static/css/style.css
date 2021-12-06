@@ -1,27 +1,6 @@
-
-/* h1{
-    font-size: 25px;
-    text-align: center;
-    color: purple;
+.form-group{
+    margin-bottom: 15px;
 }
-
-ul.nav{
-    padding-left: 0px;
-    text-align: center;
-}
-
-ul.nav > li{
-    display: inline-block;
-    padding: 10px 20px;
-}
-
-ul.nav > li:hover{
-    background-color: #2779BF;
-}
- */
- .card{
-     margin-top: 15px;
- }
 
  #pageTitle{
      text-align: center;
@@ -29,66 +8,12 @@ ul.nav > li:hover{
 
  .card{
      width: 250px;
+     margin-top: 15px;
  }
-#Cart{
-    border: 10px solid #555;
-    background-color: #DBF9FC;
-
-}
-
-#profileHead{
-    text-align: center;
-    
-    
-    }
-.profileWelcome{
-    text-align: center;
-    text-decoration-color: blue;
-
-}
-
-.profileText{
-text-align: center;
-padding-top: 5%;
-padding-bottom: 5%;
-}
-
-
+ 
 .button2{
     color: crimson;
 }
-
-#checkoutForm{
-        text-color: red;
-        background-color: #DBF9FC;
-        border: 10px solid #555;
-        text-align: center;
-        margin:auto;
-        width:75%;
-
-}
-
-
-#CheckoutHead{
-    text-align: center;
-
-}
-
-#CartCSS{
-    border: 10px solid #555;    
-
-
-}
-#addressInfo{
-    padding-top:10%;
-    padding-bottom:10%;
-
-}
-#CardInfo{
-    padding-bottom:5%;
-
-}
-
 
 #DeleteButton{
     text-emphasis-color: white;
