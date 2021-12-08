@@ -2,51 +2,46 @@
 {% load static %}
 
 {% block content %}
+{% if user.is_authenticated %}
 
-<body id="genericBackgroundProfile">
-    {% if user.is_authenticated %}
+<div class="row">
+    <h1 class="profileWelcome">Profile Page for {{ request.user.firstName|capfirst }}</h1>
+    {% else %}
+    <h1 class="profileWelcome">You are currently not logged in!</h1>
+    {% endif %}
+</div>
 
-    <div class="row">
-        <h1 class="profileWelcome">Profile Page for {{ request.user.firstName|capfirst }}</h1>
-        {% else %}
-        <h1 class="profileWelcome">You are currently not logged in!</h1>
-        {% endif %}
-    </div>
+<div class="row">
+    <h3>Your current information:</h3>
+    <label>First Name: {{ request.user.firstName|capfirst }}</label>
+    <label>Last Name: {{ request.user.lastName|capfirst }}</label>
+    <label>Email Address: {{ request.user.email }}</label>
+    <hr style="margin-top: 10px;" />
+</div>
 
-    <div class="row">
-        <h3>Your current information:</h3>
-        <label>First Name: {{ request.user.firstName|capfirst }}</label>
-        <label>Last Name: {{ request.user.lastName|capfirst }}</label>
-        <label>Email Address: {{ request.user.email }}</label>
-        <hr style="margin-top: 10px;" />
-    </div>
+<div class="row" style="margin-top: 20px;">
+    <h3>Information Change Form:</h3>
+    <form method="post" name="login">
+        {% csrf_token %}
+        <div class="form-group">
+            <label class="profileEntryText" for=" firstName">New First Name</label>
+            <input type="text" class="form-control" name="firstName" placeholder="First Name" required>
+        </div>
+        <div class="form-group">
+            <label class="profileEntryText" for=" lastName">New Last Name</label>
+            <input type="text" class="form-control" name="lastName" placeholder="Last Name" required>
+        </div>
+        <div class="form-group">
+            <label class="profileEntryText" for="email">New Email Address</label>
+            <input type="text" class="form-control" name="email" placeholder="Email Address" required>
+        </div>
+        <div class="form-group">
+            <label class="profileEntryText" for="password">New Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Password" required>
+        </div>
 
-    <div class="row" style="margin-top: 20px;">
-        <h3>Information Change Form:</h3>
-        <form id="registerForm" method="post" name="login">
-            {% csrf_token %}
-            <div class="form-group">
-                <label class="profileEntryText" for=" firstName">New First Name</label>
-                <input type="text" class="form-control" name="firstName" placeholder="First Name" required>
-            </div>
-            <div class="form-group">
-                <label class="profileEntryText" for=" lastName">New Last Name</label>
-                <input type="text" class="form-control" name="lastName" placeholder="Last Name" required>
-            </div>
-            <div class="form-group">
-                <label class="profileEntryText" for="email">New Email Address</label>
-                <input type="text" class="form-control" name="email" placeholder="Email Address" required>
-            </div>
-            <div class="form-group">
-                <label class="profileEntryText" for="password">New Password</label>
-                <input type="password" class="form-control" name="password" placeholder="Password" required>
-            </div>
-
-            <button type="submit" style="margin-top: 15px;" class="btn btn-success" value="Register">Submit</button>
-        </form>
-    </div>
-</body>
-
-
+        <button type="submit" style="margin-top: 15px;" class="btn btn-success" value="Register">Submit</button>
+    </form>
+</div>
 
 {% endblock content %}
