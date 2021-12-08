@@ -4,49 +4,53 @@
 {% block content %}
 
 <div class="row justify-content-center align-items-center">
-    
-        <h1 id="pageTitle">Checkout</h1>
-        <form id="checkoutForm" method="post">
-            {% csrf_token %}
-                <h2 id="CardInfo">Card Information</h2>
-                <div class="form-group">
-                    <label for="cardNumber">Card Number:</label>
-                    <input type="text" id="cardNumber" name="cardNumber">
-                </div>
-                <div class="form-group">
-                    <label for="cardExpiry">Expiration Date:</label>
-                    <input type="text" id="cardExpiry" name="cardExpiry">
-                </div>
-                <div class="form-group">
-                    <label for="CSC">CSC:</label>
-                    <input type="text" id="CSC" name="CSC">
-                </div>
-                <h2 id="addressInfo">Address Information</h2>
-                <div class="form-group">
-                    <label for="shippingStreetAddress">Adress:</label>
-                    <input type="text" id="shippingStreetAddress" name="shippingStreetAddress">
-                </div>
-                <div class="form-group">
-                    <label for="Zip">Zip code:</label>
-                    <input type="text" id="Zip" name="Zip">
-                </div>
-                <div class="form-group">
-                    <label for="shippingCity">City:</label>
-                    <input type="text" id="shippingCity" name="shippingCity">
-                </div>
-                <div class="form-group">
-                    <label for="shippingState">State:</label><br>
-                    <input type="text" id="shippingState" name="shippingState">
-                </div>
-                <div class="form-group">
+    <h1 id="pageTitle">Checkout</h1>
+    <form method="post">
+        {% csrf_token %}
+        <h3>Card Information</h3>
+        <div class="form-group">
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" class="form-control" id="cardNumber" name="cardNumber">
+        </div>
+        <div class="form-group">
+            <label for="cardExpiry">Expiration Date:</label>
+            <input type="text" class="form-control" id="cardExpiry" name="cardExpiry">
+        </div>
+        <div class="form-group">
+            <label for="CSC">CSC:</label>
+            <input type="text" class="form-control" id="CSC" name="CSC">
+        </div>
 
-                    <label for="shippingCountry">Country:</label>
-                    <input type="text" id="shippingCountry" name="shippingCountry">
-                </div>
-            <br>
-            <button type="submit" class="btn btn-success" value="Login">Purchase</button>
-        </form>
+        <h3>Address Information</h3>
+        <div class="form-group">
+            <label for="shippingStreetAddress">Adress:</label>
+            <input type="text" class="form-control" id="shippingStreetAddress" name="shippingStreetAddress">
+        </div>
+        <div class="form-group">
+            <label for="Zip">Zip code:</label>
+            <input type="text" class="form-control" id="Zip" name="Zip">
+        </div>
+        <div class="form-group">
+            <label for="shippingCity">City:</label>
+            <input type="text" class="form-control" id="shippingCity" name="shippingCity">
+        </div>
+        <div class="form-group">
+            <label for="shippingState">State:</label><br>
+            <input type="text" class="form-control" id="shippingState" name="shippingState">
+        </div>
+        <div class="form-group">
+
+            <label for="shippingCountry">Country:</label>
+            <input type="text" class="form-control" id="shippingCountry" name="shippingCountry">
+        </div>
+        <br>
+    </form>
 </div>
-</body>
+
+<div class="row justify-content-center" style="margin-bottom: 20px;">
+    <button type="submit" class="btn btn-success col-md-2 col-sm-2" value="Login">Purchase</button>
+    <button type="submit" class="btn btn-danger col-md-2 col-sm-2" style="margin-left: 10px;" value="Cancel">Cancel</button>
+</div>
+
 
 {% endblock content %}

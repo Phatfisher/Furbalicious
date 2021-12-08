@@ -2,8 +2,7 @@
 {% load static %}
 
 {% block content %}
-<body id="genericBackgroundHome">
-<div class="container" >
+<div class="container">
     <!-- Jumbotron for cta -->
     <!-- <div class="row">
         <div class="jumbotron">
@@ -22,40 +21,40 @@
             </p>
         </div>
     </div> -->
-    <form class="homeBorder">
-    <div class="row" style="margin-top: 50px;">
-        {% for furby in furbys %}
-        <div class="col-sm-6 col-md-6 col-lg-3">
-            <div class="card">
-                <img class="card-img-top" src="{% static 'images/' %}{{ furby.imagePath }}" alt="{{ furby.imagePath }}">
-                <div class="card-body">
-                    <div class="text-center">
-                        <h5 class="card-title">{{ furby.furbyName }}</h5>
-                    </div>
-                    <p class="card-text">{{ furby.description }}</p>
-                    <div class="text-center">
-                        <b>${{ furby.cost }}</b>
-                    </div>
-                    <div class="text-center">
-                        <button type="button" id="{{furby.pk}}" class="btn btn-primary" onclick="addToCart(this)">Add to Cart</button>
+    <form>
+        <div class="row" style="margin-top: 50px;">
+            {% for furby in furbys %}
+            <div class="col-sm-6 col-md-6 col-lg-3">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'images/' %}{{ furby.imagePath }}"
+                        alt="{{ furby.imagePath }}">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <h5 class="card-title">{{ furby.furbyName }}</h5>
+                        </div>
+                        <p class="card-text">{{ furby.description }}</p>
+                        <div class="text-center">
+                            <b>${{ furby.cost }}</b>
+                        </div>
+                        <div class="text-center">
+                            <button type="button" id="{{furby.pk}}" class="btn btn-primary"
+                                onclick="addToCart(this)">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
             </div>
+            {% empty %}
+            <label>No Furbies, make sure there are furbies in DB (admin).</label>
+            {% endfor %}
         </div>
-        {% empty %}
-        <label>No Furbies, make sure there are furbies in DB (admin).</label>
-        {% endfor %}
-    </div>
     </form>
 
     <script>
-        function addToCart(button)
-        {
-            window.location.href = "/addToCart/?furbyID="+button.id;
+        function addToCart(button) {
+            window.location.href = "/addToCart/?furbyID=" + button.id;
         }
     </script>
 
-</div>   
-</body> 
+</div>
 
-    {% endblock content %}
+{% endblock content %}
