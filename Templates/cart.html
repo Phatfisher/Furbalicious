@@ -4,12 +4,11 @@
 <div class="container">
     <!-- Jumbotron for cta -->
     <div class="row">
-        <div class="jumbotron">
-            <h1 class="display-4">Check-out Cart</h1>
-            <hr class="my-4">
-            </p>
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Cart</h1>
         </div>
     </div>
+    <hr/>
 
     <!-- Content just as default data for now -->
     <div class="row">
@@ -33,7 +32,7 @@
             </div>
         </div>
         {% empty %}
-        <label>There are no furbies in your cart. <a href="{% url 'home' %}">Click here</a> to view the collection.</label>
+        <label class="text-center">There are no furbies in your cart. <a href="{% url 'home' %}">Click here</a> to view the collection.</label>
         {% endfor %}
     </div>
 
