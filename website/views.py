@@ -78,13 +78,18 @@ class ProfilePageView(TemplateView):
         if request.user.is_authenticated:
             user = CustomUser.objects.filter(email=request.user.email).first()
 
-            user.firstName = request.POST['firstName']
-            user.lastName = request.POST['lastName']
-            user.email = request.POST['email']
-            user.password = make_password(request.POST['password'])
-            user.username = request.POST['email']
+            if request.POST['firstName'] != "": user.firstName = request.POST['firstName']
+            if request.POST['lastName'] != "": user.lastName = request.POST['lastName']
+            if request.POST['email'] != "": user.email = request.POST['email']
+            if request.POST['password'] != "": 
+                user.password = make_password(request.POST['password'])
+                
+
+            
             user.save()
             return redirect('home')
+
+
 
         #Else redirect back to login page
         else:
@@ -153,6 +158,7 @@ class CheckoutPageView(TemplateView):
                 orderFurbies = OrderFurbies(order=newOrder, furby = chosenFurby)
                 orderFurbies.save()
 
+            request.session['cart'] = []
             return redirect('home')
 
         #Else redirect back to login page
