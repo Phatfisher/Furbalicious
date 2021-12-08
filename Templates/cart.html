@@ -7,13 +7,11 @@
         <div class="jumbotron">
             <h1 class="display-4">Check-out Cart</h1>
             <hr class="my-4">
-            <p class="lead">
             </p>
         </div>
     </div>
 
     <!-- Content just as default data for now -->
-
     <div class="row">
         {% for furby in furbies %}
         <div class="col-sm-3">
@@ -35,14 +33,16 @@
             </div>
         </div>
         {% empty %}
-        <label>There are no furbies in your cart. Click <a href="{% url 'home' %}">here</a> to view the collection.</label>
+        <label>There are no furbies in your cart. <a href="{% url 'home' %}">Click here</a> to view the collection.</label>
         {% endfor %}
     </div>
 
-    <p class="lead" style="padding-top:200; text-align:center;"> Grand Total: ${{total}}
-        <br>
+    <div class="row text-center" style="margin-top: 15px; margin-bottom: 20px;">
+        {% if total > 0 %}
+        <h5>Grand Total: ${{ total }}</h5>
         <a id="CartToCheckout" href="{% url 'checkout' %}">Checkout Order</a>
-    </p>
+        {% endif %}
+    </div>
 </div>
 
 <script>
