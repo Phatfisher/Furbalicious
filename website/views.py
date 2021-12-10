@@ -160,6 +160,7 @@ class CheckoutPageView(TemplateView):
                 orderFurbies = OrderFurbies(order=newOrder, furby = chosenFurby)
                 orderFurbies.save()
 
+            request.session['cart'] = []
             messages.info(request, "Furbies purchased successfully!")
             return redirect('home')
 
