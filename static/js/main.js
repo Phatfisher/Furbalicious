@@ -1,3 +1,17 @@
+//Checks the Query String for any messages that need to be displayed to the user, and displays them on page load.
+function displayMessage()
+{
+    let queryString = (new URL(document.location)).searchParams;
+
+    if(queryString.has("msg"))
+    {
+        let msgCode = queryString.get("msg");
+        if(msgCode in msgCodes) window.onload = function(){
+            alert(msgCodes[msgCode]);
+        }
+    }
+}
+
 //On page load
 window.onload = function() 
 {
@@ -8,7 +22,7 @@ window.onload = function()
 function enableModal()
 {
     // Get the modal
-    var modal = document.getElementById("myModal");
+    var modal = document.getElementById("msgModal");
     var modalContent = document.getElementById("modalContent");
 
     // Get the <span> element that closes the modal
