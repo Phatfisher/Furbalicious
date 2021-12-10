@@ -27,9 +27,12 @@ ul.nav > li:hover{
      margin-top: 15px;
  }
 
- div.row{
+ /* div.row{
      margin-top: 15px;
      margin-bottom: 15px;
+<<<<<<< HEAD
+ } */
+=======
  }
 
  /* The Modal (background) */
@@ -72,3 +75,4 @@ ul.nav > li:hover{
         opacity: 1
     }
 }
+>>>>>>> main
