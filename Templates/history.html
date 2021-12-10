@@ -6,12 +6,10 @@
     <div class="jumbotron text-center">
         <h1 class="display-4">History</h1>
     </div>
-    
     <hr/>
 
     <!-- Content just as default data for now -->
     <div class="row">
-
         {% for furby in furbys %}
         <div class="col-sm-6 col-md-6 col-lg-3">
             <div class="card">
@@ -30,12 +28,8 @@
             </div>
         </div>
         {% empty %}
-        <label>No Furbies bought yet</label>
+        <label>No Furbies bought yet.</label>
         {% endfor %}
-        
-
-
-        
     </div>
  
 </div>
