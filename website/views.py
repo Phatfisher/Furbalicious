@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView,ListView
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import HttpResponse,  HttpResponseRedirect
 from django.urls import reverse
@@ -45,11 +46,10 @@ class RegistrationPageView(TemplateView):
 
             newUser.save()
             login(request, newUser)
-            print(' SuccLoginessful')
             return HttpResponseRedirect(reverse('home'))
 
         else:
-            print('Registration Failed:  Email in use')
+            messages.info(request, "Email already in use.")
             return redirect('/registration/')
 
 class LoginPageView(TemplateView):
@@ -68,7 +68,7 @@ class LoginPageView(TemplateView):
 
         #Else redirect back to login page.  Ideally we need a message system.
         else:
-            print('Login Failed for: ' + email + " " + password)
+            messages.info(request, "Incorrect Username or Password")
             return redirect('/login/')
 
 class ProfilePageView(TemplateView):
@@ -87,12 +87,14 @@ class ProfilePageView(TemplateView):
 
             
             user.save()
+            messages.info(request, "Account Updated Successfully!")
             return redirect('home')
 
 
 
         #Else redirect back to login page
         else:
+            messages.info(request, "You must be logged for this function.")
             return redirect('/login/')
 
 class CartPageView(TemplateView):
@@ -158,11 +160,12 @@ class CheckoutPageView(TemplateView):
                 orderFurbies = OrderFurbies(order=newOrder, furby = chosenFurby)
                 orderFurbies.save()
 
-            request.session['cart'] = []
+            messages.info(request, "Furbies purchased successfully!")
             return redirect('home')
 
         #Else redirect back to login page
         else:
+            messages.info(request, "You must be logged for this function.")
             return redirect('/login/')
     
 def logout_request(request):
@@ -180,9 +183,12 @@ def addToCart(request):
             else: 
                 request.session['cart'].append(furbyID)
                 request.session.save()
-            print(furby.furbyName + " added to cart!")
-        else: print("I am error.  Furby ID does not exist." + furbyID)
-        return redirect('home')
+            messages.info(request, furby.furbyName +" has been added to your shopping cart!")
+            return redirect('home')
+        else: 
+            print("I am error.  Furby ID does not exist." + furbyID)
+            return redirect('home')
+        
 
     else:
         print("User not logged in.")
@@ -199,11 +205,11 @@ def removeFromCart(request):
             else: 
                 request.session['cart'].remove(furbyID)
                 request.session.save()
-            print(furby.furbyName + " removed!")
+            messages.info(request, furby.furbyName +" has been removed from your shopping cart! :(")
 
         else: print("I am error.  Furby ID does not exist.")
 
         return redirect('cart')
     else:
-        print("User not logged in.")
+        messages.info(request, "You must be logged for this function.")
         return redirect('login')
