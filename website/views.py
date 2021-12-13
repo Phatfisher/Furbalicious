@@ -114,6 +114,7 @@ class CartPageView(TemplateView):
             furbies.append(furby)
             total += furby.cost
 
+        total = round(total,2)
         return render(request, 'cart.html', {'furbies': furbies, 'total': total})
 
 
