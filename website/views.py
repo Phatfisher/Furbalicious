@@ -167,7 +167,7 @@ class CheckoutPageView(TemplateView):
                 total += chosenFurby.cost
 
             request.session['cart'] = []
-	    emailMsg+="<br>Total Cost: $"+str(round(total,2)) + "<br><br>Please allow an infinite amount of time for shipping.<br><br>Thanks again!<br>Furbalicious"
+	        emailMsg+="<br>Total Cost: $"+str(round(total,2)) + "<br><br>Please allow an infinite amount of time for shipping.<br><br>Thanks again!<br>Furbalicious"
             Email.sendEmail("Furby Order", emailMsg, [request.user.email])
             messages.info(request, "Furbies purchased successfully!")
             return redirect('home')
