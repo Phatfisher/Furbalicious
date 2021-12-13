@@ -13,6 +13,7 @@ import datetime
 from django.utils import timezone
 from django.contrib.auth.hashers import make_password
 from website.Controllers.orderFurby import NewFurby
+from website.Controllers import Email
 
 
 class HomePageView(TemplateView):
@@ -155,12 +156,19 @@ class CheckoutPageView(TemplateView):
 
             cart = request.session.get('cart')
 
+            emailMsg = "Hi " + request.user.firstName + ",<br><br>Congratulations on your Furby Order! You are now the proud owner of the following Furbies:<br><br>"
+            total = 0
+
             for furbyId in cart:
                 chosenFurby = Furby.objects.filter(pk=furbyId).first()
                 orderFurbies = OrderFurbies(order=newOrder, furby = chosenFurby)
                 orderFurbies.save()
+                emailMsg+=chosenFurby.furbyName +" ($"+str(chosenFurby.cost)+")<br>"
+                total += chosenFurby.cost
 
             request.session['cart'] = []
+	        emailMsg+="<br>Total Cost: $"+str(round(total,2)) + "<br><br>Please allow an infinite amount of time for shipping.<br><br>Thanks again!<br>Furbalicious"
+            Email.sendEmail("Furby Order", emailMsg, [request.user.email])
             messages.info(request, "Furbies purchased successfully!")
             return redirect('home')
 
