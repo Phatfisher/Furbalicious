@@ -79,14 +79,19 @@ class ProfilePageView(TemplateView):
         if request.user.is_authenticated:
             user = CustomUser.objects.filter(email=request.user.email).first()
 
-            user.firstName = request.POST['firstName']
-            user.lastName = request.POST['lastName']
-            user.email = request.POST['email']
-            user.password = make_password(request.POST['password'])
-            user.username = request.POST['email']
+            if request.POST['firstName'] != "": user.firstName = request.POST['firstName']
+            if request.POST['lastName'] != "": user.lastName = request.POST['lastName']
+            if request.POST['email'] != "": user.email = request.POST['email']
+            if request.POST['password'] != "": 
+                user.password = make_password(request.POST['password'])
+                
+
+            
             user.save()
             messages.info(request, "Account Updated Successfully!")
             return redirect('home')
+
+
 
         #Else redirect back to login page
         else:
@@ -161,7 +166,8 @@ class CheckoutPageView(TemplateView):
                 emailMsg+=chosenFurby.furbyName +" ($"+str(chosenFurby.cost)+")<br>"
                 total += chosenFurby.cost
 
-            emailMsg+="<br>Total Cost: $"+str(round(total,2)) + "<br><br>Please allow an infinite amount of time for shipping.<br><br>Thanks again!<br>Furbalicious"
+            request.session['cart'] = []
+	    emailMsg+="<br>Total Cost: $"+str(round(total,2)) + "<br><br>Please allow an infinite amount of time for shipping.<br><br>Thanks again!<br>Furbalicious"
             Email.sendEmail("Furby Order", emailMsg, [request.user.email])
             messages.info(request, "Furbies purchased successfully!")
             return redirect('home')
