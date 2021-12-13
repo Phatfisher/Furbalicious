@@ -13,7 +13,7 @@
         <div class="row col-md-4">
             <div class="form-group">
                 <label for="cardNumber">Card Number:</label>
-                <input type="text" class="form-control" id="cardNumber" name="cardNumber">
+                <input type="number" class="form-control" id="cardNumber" name="cardNumber" required>
             </div>
         </div>
 
@@ -21,13 +21,13 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="cardExpiry">Expiration Date:</label>
-                    <input type="text" class="form-control" id="cardExpiry" name="cardExpiry">
+                    <input type="text" class="form-control" id="cardExpiry" name="cardExpiry" required>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="CSC">CSC:</label>
-                    <input type="text" class="form-control" id="CSC" name="CSC">
+                    <input type="number" class="form-control" id="CSC" name="CSC" required>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
         <div class="row col-md-6">
             <div class="form-group">
                 <label for="shippingStreetAddress">Address:</label>
-                <input type="text" class="form-control" id="shippingStreetAddress" name="shippingStreetAddress">
+                <input type="text" class="form-control" id="shippingStreetAddress" name="shippingStreetAddress" required>
             </div>
         </div>
 
@@ -44,14 +44,18 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="shippingCity">City:</label>
-                    <input type="text" class="form-control" id="shippingCity" name="shippingCity">
+                    <input type="text" class="form-control" id="shippingCity" name="shippingCity" required>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="shippingState">State / Province:</label><br>
                     <div class="col-sm-10">
+<<<<<<< Updated upstream
                         <select class="form-control" id="state" name="state">
+=======
+                        <select class="form-control" id="shippingState" name="shippingState" required>
+>>>>>>> Stashed changes
                             <option value="">N/A</option>
                             <option value="AK">Alaska</option>
                             <option value="AL">Alabama</option>
@@ -112,7 +116,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="Zip">Zip code:</label>
-                    <input type="text" class="form-control" id="Zip" name="Zip">
+                    <input type="text" class="form-control" id="Zip" name="Zip" required>
                 </div>
             </div>
         </div>
@@ -120,7 +124,7 @@
         <div class="col-md-3">
             <div class="form-group">
                 <label for="shippingCountry">Country:</label>
-                <input type="text" class="form-control" id="shippingCountry" name="shippingCountry">
+                <input type="text" class="form-control" id="shippingCountry" name="shippingCountry" required>
             </div>
         </div>
         
