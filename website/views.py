@@ -81,7 +81,9 @@ class ProfilePageView(TemplateView):
 
             if request.POST['firstName'] != "": user.firstName = request.POST['firstName']
             if request.POST['lastName'] != "": user.lastName = request.POST['lastName']
-            if request.POST['email'] != "": user.email = request.POST['email']
+            if request.POST['email'] != "": 
+                user.email = request.POST['email']
+                user.username = request.POST['email']
             if request.POST['password'] != "": 
                 user.password = make_password(request.POST['password'])
                 
@@ -98,6 +100,7 @@ class ProfilePageView(TemplateView):
             messages.info(request, "You must be logged for this function.")
             return redirect('/login/')
 
+#Displays all the Furbies in the shopping cart
 class CartPageView(TemplateView):
     template_name = 'cart.html'
 
